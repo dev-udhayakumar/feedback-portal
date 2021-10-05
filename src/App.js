@@ -2,18 +2,18 @@ import Login from './pages/login';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './pages/signup';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-      </Switch>
+         <Route exact path="/">
+          <Login/>
+        </Route>
+          <Route exact path="/signup">
+          <Signup/>
+        </Route>
       </BrowserRouter>
     </div>
   );
 }
-
-
 export default App;
