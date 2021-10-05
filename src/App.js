@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {Component} from "react";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Login from './pages/login';
-import { BrowserRouter, Route } from 'react-router-dom';
 import Signup from './pages/signup';
 
-const App = () => {
-  return (
-    <div className="App">
-      <BrowserRouter>
-         <Route exact path="/">
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Route exact path="/">
+          <Redirect to="/Home"/>
+        </Route>
+        <Route exact path="/Home">
           <Login/>
         </Route>
-          <Route exact path="/signup">
+        <Route exact path="/Signup">
           <Signup/>
         </Route>
-      </BrowserRouter>
-    </div>
-  );
+      </Router>
+   );
+  }
 }
+
 export default App;
