@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="feedback-dev.netlify.app/signup" component={Signup} />
+        <Route path="/signup" component={Signup} />
       </Switch>
       </BrowserRouter>
     </div>
