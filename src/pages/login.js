@@ -1,7 +1,7 @@
 import React from "react";
 import { Button , Card ,Container ,Form,Navbar} from 'react-bootstrap';
 
-function Login(){
+const Login= () =>{
     return(
         <><div>
             <Container fluid="true">
