@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import Home from "./pages/home";
 import Login from './pages/login';
 import Signup from './pages/signup';
 
@@ -8,13 +9,16 @@ class App extends Component {
     return (
       <Router>
         <Route exact path="/">
-          <Redirect to="/Home"/>
+          <Redirect to="/Welcome"/>
         </Route>
-        <Route exact path="/Home">
+        <Route exact path="/Welcome">
           <Login/>
         </Route>
         <Route exact path="/Signup">
           <Signup/>
+        </Route>
+        <Route exact path="/Home">
+          <Home/>
         </Route>
       </Router>
    );
