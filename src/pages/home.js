@@ -14,6 +14,7 @@ function Home(){
         </div><div>
             <center>
                 <h1 >Hello! Udhayakumar</h1>
+                <h2>vanakkam</h2>
                 </center>
             </div></>
                 
