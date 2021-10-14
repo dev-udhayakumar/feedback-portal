@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 const Signup = () =>{
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
+    const [name ,setname] = useState('');
+    const [number,setnumber] = useState('');
     const [ loading, setLoading ] = useState(false);
     const history = useHistory();
     function signin(){
@@ -14,6 +16,8 @@ const Signup = () =>{
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
+            updateProfile(auth.currentUser, { displayName: name });
+            updateProfile(auth.currentUser, { phoneNumber:number });
             const user = userCredential.user;
             console.log(user);
             history.push("/Login");
@@ -40,6 +44,14 @@ const Signup = () =>{
             <div className="card shadow border-light rounded" Style="width: 22rem;">
             <h2 className="card-title m-3">Create Account</h2>
             <div className="card-body">
+            <div className="mb-3">
+                <label className="form-label">Full name</label>
+                <input type="text" className="form-control" Value={name} onInput={e => setname(e.target.value)} placeholder="Enter Fullname"  />
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Phone number</label>
+                <input type="number" className="form-control" Value={number} onInput={e => setnumber(e.target.value)} placeholder="Enter phonenumber"  />
+            </div>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
                 <input type="email" className="form-control" Value={email} onInput={e => setemail(e.target.value)} placeholder="Enter email"  />
