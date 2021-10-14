@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 
 function Home(){
     const history = useHistory();
+    const auth = getAuth();
+    const user = auth.currentUser;
     function signout(){
         const auth = getAuth();
         signOut(auth).then(() => {
@@ -27,7 +29,7 @@ function Home(){
             </Container>
         </div><div>
             <center>
-                <h1 >u r logged in successfully</h1>
+                <h1 ><h1>Hii</h1> <h1>{user && user.displayName}</h1>you are logged in successfully</h1>
                 </center>
             </div></>
                 
