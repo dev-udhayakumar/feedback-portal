@@ -1,6 +1,6 @@
 import React from "react";
-import LottieAnimation from 'Lottifile';
-import load from 'loding.json';
+import LottieAnimation from './Lottifile';
+import load from './loading.json';
 
 function loading(){
     
@@ -8,7 +8,7 @@ function loading(){
         <><div>
         </div><div>
         <LottieAnimation lotti={load} height={300} width={300} />
-            </div></>
+        </div></>
                 
     )
 }

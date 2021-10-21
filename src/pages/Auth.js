@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import firebaseConfig from "./Firebase.js";
+import Lode from "../Animation/loding";
 
 export const AuthContext = React.createContext();
 
@@ -13,7 +14,9 @@ export const AuthProvider = ({children}) => {
     });
   }, []);
   if (loading) {
-    return <p>Loading...</p>;
+    return(
+     <Lode></Lode>
+    ) ;
   }
   return (<AuthContext.Provider value={{
       currentUser

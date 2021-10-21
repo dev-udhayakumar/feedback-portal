@@ -23,9 +23,6 @@ class App extends Component {
         <Route exact path="/Home">
           <Home/>
         </Route>
-        <Route exact path="/*">
-          <notFound/>
-        </Route>
       </Router>
       </AuthProvider>
    );
