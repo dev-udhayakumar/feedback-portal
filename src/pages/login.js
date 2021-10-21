@@ -3,6 +3,9 @@ import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory,Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth";
+import LottieAnimation from '../Animation/Lottifile';
+import home from '../Animation/login.json';
+
 const Login= () =>{
     
     const {currentUser} = useContext(AuthContext)
@@ -38,13 +41,19 @@ const Login= () =>{
 
     return(  
         <div >
-            <div >
-            <nav className="navbar navbar-dark bg-primary">
-            <h3 className="ms-3">Feedback-portal</h3>
+
+            <div>
+            <nav className="navbar navbar-dark bg-whites">
+            <h3 className="ms-3">Firebase</h3>
                 </nav>
             </div>
-            <div className="d-flex justify-content-center mt-4">
-            <div className="card shadow border-light rounded" style={{width: "22rem"}}>
+            <div className="row">
+                <div className="col">
+                <LottieAnimation lotti={home} height={300} width={300} />
+                </div>
+                <div className="col" >
+                <div className="d-flex justify-content-center mt-4">
+                <div className="card border-white rounded" style={{width: "22rem"}}>
             <h2 className="card-title m-3">Login</h2>
             <div className="card-body">
             <div className="mb-3">
@@ -62,6 +71,11 @@ const Login= () =>{
             </div>
             </div>
             </div> 
+                
+                </div>
+            </div>
+            
+            
         </div>
 )
 }

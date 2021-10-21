@@ -7,7 +7,6 @@ const Signup = () =>{
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
     const [name ,setname] = useState('');
-    const [number,setnumber] = useState('');
     const [ loading, setLoading ] = useState(false);
     const history = useHistory();
     function signin(){
@@ -17,8 +16,6 @@ const Signup = () =>{
         .then((userCredential) => {
             // Signed in 
             updateProfile(auth.currentUser, { displayName: name });
-            console.log(number);
-            updateProfile(auth.currentUser, { phoneNumber : number });
             const user = userCredential.user;
             console.log(user);
             history.push("/Login");
@@ -37,25 +34,31 @@ const Signup = () =>{
     return(
         <div >
             <div >
-            <nav className="navbar navbar-dark bg-primary">
+            <nav className="navbar navbar-dark bg-white">
             <h3 className="ms-3">Firebase</h3>
                 </nav>
             </div>
             <div className="d-flex justify-content-center mt-4">
-            <div className="card shadow border-light rounded" style={{width: "22rem"}}>
-            <h2 className="card-title m-3">Create Account</h2>
+            <div className="card border-white  rounded" style={{width: "22rem"}}>
+            <h2 className="card-title m-3">Create Your Account</h2>
             <div className="card-body">
-            <div className="mb-3">
-                <label className="form-label">Full name</label>
-                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="Enter Fullname"  />
+            <div className="row">
+                <div className="col">
+                <div className="mb-3">
+                <label className="form-label">First name</label>
+                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="Udhayakumar"  />
             </div>
-            <div className="mb-3">
-                <label className="form-label">Phone number</label>
-                <input type="number" className="form-control" value={number} onInput={e => setnumber(e.target.value)} placeholder="Enter phonenumber"  />
+                </div>
+                <div className="col">
+                <div className="mb-3">
+                <label className="form-label">Last name</label>
+                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="T"  />
+            </div>
+                </div>
             </div>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="Enter email"  />
+                <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="dev.udhayakumar@gmail.com"  />
             </div>
             <div className="mb-3">
                 <label className="form-label">Password</label>
@@ -65,9 +68,17 @@ const Signup = () =>{
                 <label className="form-label">Confirm Password</label>
                 <input type="password" className="form-control" placeholder="Confirm Password" />
             </div>
-            <div className="d-grid gap-2 mt-4">
-            <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signup'}</button>
-            <button className="btn btn-outline-primary"  onClick={alreadyhaveaccounnt}>Already Have an Account</button>
+            <div className="row">
+                <div className="col">
+                    <div className="d-grid gap-2 mt-4">
+                    <button className="btn btn-outline-primary"  onClick={alreadyhaveaccounnt}>Login instead</button>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="d-grid gap-2 mt-4">
+                    <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signin'}</button>
+                    </div>
+                </div>
             </div>
             </div>
             </div>
