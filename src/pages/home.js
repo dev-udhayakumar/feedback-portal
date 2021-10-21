@@ -1,12 +1,15 @@
 import React from "react";
 import { Button,Container,Navbar} from 'react-bootstrap';
 import { getAuth, signOut } from "firebase/auth";
-import { useHistory } from "react-router-dom";
+import { useHistory,Redirect } from "react-router-dom";
 
 function Home(){
     const history = useHistory();
     const auth = getAuth();
     const user = auth.currentUser;
+    if(!user){
+        return <Redirect to="/login" />
+    }
     function signout(){
         const auth = getAuth();
         signOut(auth).then(() => {

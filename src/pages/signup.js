@@ -17,7 +17,8 @@ const Signup = () =>{
         .then((userCredential) => {
             // Signed in 
             updateProfile(auth.currentUser, { displayName: name });
-            updateProfile(auth.currentUser, { phoneNumber:number });
+            console.log(number);
+            updateProfile(auth.currentUser, { phoneNumber : number });
             const user = userCredential.user;
             console.log(user);
             history.push("/Login");
@@ -37,28 +38,28 @@ const Signup = () =>{
         <div >
             <div >
             <nav className="navbar navbar-dark bg-primary">
-            <h3 className="ms-3">Feedback-portal</h3>
+            <h3 className="ms-3">Firebase</h3>
                 </nav>
             </div>
             <div className="d-flex justify-content-center mt-4">
-            <div className="card shadow border-light rounded" Style="width: 22rem;">
+            <div className="card shadow border-light rounded" style={{width: "22rem"}}>
             <h2 className="card-title m-3">Create Account</h2>
             <div className="card-body">
             <div className="mb-3">
                 <label className="form-label">Full name</label>
-                <input type="text" className="form-control" Value={name} onInput={e => setname(e.target.value)} placeholder="Enter Fullname"  />
+                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="Enter Fullname"  />
             </div>
             <div className="mb-3">
                 <label className="form-label">Phone number</label>
-                <input type="number" className="form-control" Value={number} onInput={e => setnumber(e.target.value)} placeholder="Enter phonenumber"  />
+                <input type="number" className="form-control" value={number} onInput={e => setnumber(e.target.value)} placeholder="Enter phonenumber"  />
             </div>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <input type="email" className="form-control" Value={email} onInput={e => setemail(e.target.value)} placeholder="Enter email"  />
+                <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="Enter email"  />
             </div>
             <div className="mb-3">
                 <label className="form-label">Password</label>
-                <input type="password" className="form-control" Value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
+                <input type="password" className="form-control" value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
             </div>
             <div className="mb-3">
                 <label className="form-label">Confirm Password</label>
