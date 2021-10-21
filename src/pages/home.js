@@ -7,6 +7,7 @@ function Home(){
     const history = useHistory();
     const auth = getAuth();
     const user = auth.currentUser;
+    console.log(user.displayName);
     if(!user){
         return <Redirect to="/login" />
     }
@@ -32,7 +33,7 @@ function Home(){
             </Container>
         </div><div>
             <center>
-                <h1 ><h1>Hii</h1> <h1>{user && user.displayName}</h1>you are logged in successfully</h1>
+                <h1 ><h1>Hii</h1> <h1>{user.displayName}</h1>you are logged in successfully</h1>
                 </center>
             </div></>
                 

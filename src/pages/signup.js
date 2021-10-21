@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 const Signup = () =>{
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
-    const [name ,setname] = useState('');
+    const [firstname ,setfirstname] = useState('');
+    const [lastname ,setlastname] = useState('');
     const [ loading, setLoading ] = useState(false);
     const history = useHistory();
     function signin(){
@@ -15,7 +16,7 @@ const Signup = () =>{
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            updateProfile(auth.currentUser, { displayName: name });
+            updateProfile(auth.currentUser, { displayName: firstname +" "+ lastname });
             const user = userCredential.user;
             console.log(user);
             history.push("/Login");
@@ -46,13 +47,13 @@ const Signup = () =>{
                 <div className="col">
                 <div className="mb-3">
                 <label className="form-label">First name</label>
-                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="Udhayakumar"  />
+                <input type="text" className="form-control" value={firstname} onInput={e => setfirstname(e.target.value)} placeholder="Udhayakumar"  />
             </div>
                 </div>
                 <div className="col">
                 <div className="mb-3">
                 <label className="form-label">Last name</label>
-                <input type="text" className="form-control" value={name} onInput={e => setname(e.target.value)} placeholder="T"  />
+                <input type="text" className="form-control" value={lastname} onInput={e => setlastname(e.target.value)} placeholder="T"  />
             </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@ const Signup = () =>{
             <div className="row">
                 <div className="col">
                     <div className="d-grid gap-2 mt-4">
-                    <button className="btn btn-outline-primary"  onClick={alreadyhaveaccounnt}>Login instead</button>
+                    <button className="btn btn-outline-secondary"  onClick={alreadyhaveaccounnt}>Login instead</button>
                     </div>
                 </div>
                 <div className="col">

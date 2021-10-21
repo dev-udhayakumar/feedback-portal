@@ -5,7 +5,6 @@ import { useHistory,Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import LottieAnimation from '../Animation/Lottifile';
 import home from '../Animation/login.json';
-
 const Login= () =>{
     
     const {currentUser} = useContext(AuthContext)
@@ -64,10 +63,19 @@ const Login= () =>{
                 <label className="form-label">Password</label>
                 <input type="password" className="form-control " value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
             </div>
-            <div className="d-grid gap-2 mt-4">
-            <button className="btn btn-primary " type="button" onClick={login}>{loading ? 'Loading..' : 'Login'}</button>
-            <button className="btn btn-outline-primary "  onClick={CreateAccount}>Create an Account</button>
+            <div className="row">
+                <div className="col">
+                <div className="d-grid gap-2 mt-4">
+            <button className="btn btn-outline-secondary "  onClick={CreateAccount}>Create Account</button>
             </div>
+                </div>
+                <div className="col">
+                <div className="d-grid gap-2 mt-4">
+            <button className="btn btn-primary " type="button" onClick={login}>{loading ? 'Loading..' : 'Login'}</button>
+            </div>
+                </div>
+            </div>
+            
             </div>
             </div>
             </div> 
