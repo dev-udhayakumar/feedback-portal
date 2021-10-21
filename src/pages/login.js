@@ -11,7 +11,6 @@ const Login= () =>{
     const [ loading, setLoading ] = useState(false);
     const history = useHistory();
     const auth = getAuth();
-    const user = auth.currentUser;
     if(currentUser){
         return <Redirect to="/home" />
     }
