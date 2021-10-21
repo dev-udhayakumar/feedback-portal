@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Home from "./pages/home";
 import Login from './pages/login';
 import Signup from './pages/signup';
-import notFound from "./pages/notfound";
 import { AuthProvider } from "./pages/Auth";
 
 
