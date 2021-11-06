@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Home from "./pages/home";
 import Login from './pages/login';
 import Signup from './pages/signup';
+import Report from './pages/addreport';
 import { AuthProvider } from "./pages/Auth";
 
 
@@ -22,6 +23,9 @@ class App extends Component {
         </Route>
         <Route exact path="/Home">
           <Home/>
+        </Route>
+        <Route exact path="/Report">
+          <Report/>
         </Route>
       </Router>
       </AuthProvider>
