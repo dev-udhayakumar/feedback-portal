@@ -6,7 +6,6 @@ function Home(){
     const history = useHistory();
     const auth = getAuth();
     const user = auth.currentUser;
-    console.log(user.displayName);
     if(!user){
         return <Redirect to="/login" />
     }
@@ -25,12 +24,12 @@ function Home(){
         history.push("/Report");
     }
     return(
-        <><div>
+        <><div className="continer">
             <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
             <button class="btn btn-outline-secondary" onClick={signout}>LogOut</button>
             <div class="d-flex">
-            <button type="button" class="btn btn-white " disabled>Hello , {user.displayName}</button>
+            <button type="button" class="btn btn-white " disabled>Hello  {user.displayName}</button>
             </div>
             </div>
             </nav>

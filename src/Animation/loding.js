@@ -5,9 +5,12 @@ import load from './loading.json';
 function loading(){
     
     return(
-        <><div>
+        <><div className="continer">
         </div><div>
-        <LottieAnimation lotti={load} height={300} width={300} />
+            <div className="position-absolute top-50 start-50 translate-middle">
+            <LottieAnimation lotti={load} height={100} width={100} />
+            </div>
+        
         </div></>
                 
     )

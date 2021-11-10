@@ -7,7 +7,7 @@ function AddReport(){
         history.push("/Home");
     }
     return(
-        <div>
+        <div className="continer">
             <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
             <button class="btn btn-outline-secondary" onClick={back}>Back</button>

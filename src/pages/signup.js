@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useHistory } from "react-router-dom";
+import Lode from "../Animation/loding";
 
 const Signup = () =>{
     const [email,setemail] = useState('');
@@ -33,57 +34,61 @@ const Signup = () =>{
     }
 
     return(
-        <div >
+        <div >{loading ? <Lode></Lode> : <div>
             <div >
-            <nav className="navbar navbar-dark bg-white">
-            <h3 className="ms-3">Firebase</h3>
-                </nav>
-            </div>
-            <div className="d-flex justify-content-center mt-4">
-            <div className="card border-white  rounded" style={{width: "22rem"}}>
-            <h2 className="card-title m-3">Create Your Account</h2>
-            <div className="card-body">
-            <div className="row">
-                <div className="col">
-                <div className="mb-3">
-                <label className="form-label">First name</label>
-                <input type="text" className="form-control" value={firstname} onInput={e => setfirstname(e.target.value)} placeholder="Udhayakumar"  />
-            </div>
+                <nav className="navbar navbar-dark bg-white">
+                <h3 className="ms-3">Firebase</h3>
+                    </nav>
                 </div>
-                <div className="col">
-                <div className="mb-3">
-                <label className="form-label">Last name</label>
-                <input type="text" className="form-control" value={lastname} onInput={e => setlastname(e.target.value)} placeholder="T"  />
-            </div>
+                <div className="d-flex justify-content-center ">
+                <div className="card border-white  rounded" style={{width: "22rem"}}>
+                <h2 className="card-title m-3">Create Your Account</h2>
+                <div className="card-body">
+                <div className="row">
+                    <div className="col">
+                    <div className="mb-3">
+                    <label className="form-label">First name</label>
+                    <input type="text" className="form-control" value={firstname} onInput={e => setfirstname(e.target.value)} placeholder="Udhayakumar"  />
                 </div>
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Email address</label>
-                <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="dev.udhayakumar@gmail.com"  />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input type="password" className="form-control" value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Confirm Password</label>
-                <input type="password" className="form-control" placeholder="Confirm Password" />
-            </div>
-            <div className="row">
-                <div className="col">
-                    <div className="d-grid gap-2 mt-4">
-                    <button className="btn btn-outline-secondary"  onClick={alreadyhaveaccounnt}>Login instead</button>
+                    </div>
+                    <div className="col">
+                    <div className="mb-3">
+                    <label className="form-label">Last name</label>
+                    <input type="text" className="form-control" value={lastname} onInput={e => setlastname(e.target.value)} placeholder="T"  />
+                </div>
                     </div>
                 </div>
-                <div className="col">
-                    <div className="d-grid gap-2 mt-4">
-                    <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signin'}</button>
+                <div className="mb-3">
+                    <label className="form-label">Email address</label>
+                    <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="dev.udhayakumar@gmail.com"  />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input type="password" className="form-control" value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Confirm Password</label>
+                    <input type="password" className="form-control" placeholder="Confirm Password" />
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <div className="d-grid gap-2 mt-4">
+                        <button className="btn btn-outline-secondary"  onClick={alreadyhaveaccounnt}>Login instead</button>
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="d-grid gap-2 mt-4">
+                        <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signin'}</button>
+                        </div>
                     </div>
                 </div>
+                </div>
+                </div>
+                </div> 
             </div>
-            </div>
-            </div>
-            </div> 
+        }
+        
+            
         </div>
     )
 }
