@@ -12,8 +12,8 @@ function Home(){
     function signout(){
         const auth = getAuth();
         signOut(auth).then(() => {
-          // Sign-out successful.
           history.push("/Login");
+          alert("loged out successfully")
         }).catch((error) => {
           // An error happened.
           alert(error)

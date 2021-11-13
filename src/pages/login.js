@@ -56,7 +56,7 @@ const Login= () =>{
         <div >{loading ? <Lode></Lode> : <div>
             <div className="p-0">
                 <nav className="navbar navbar-dark bg-whites">
-                <h3 className="ms-3">Firebase</h3>
+                <h3 className="ms-3">Feedback</h3>
                     </nav>
                 </div>
                 <div>
