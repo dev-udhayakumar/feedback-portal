@@ -16,6 +16,7 @@ const Login= () =>{
     const auth = getAuth();
     if(currentUser){
         return <Redirect to="/home" />
+        
     }
     function login(){
         setLoading(true);
@@ -37,9 +38,10 @@ const Login= () =>{
     function Guest(){
         setLoading(true);
         signInAnonymously(auth)
-        .then(() => {
+        .then((userCredential) => {
             history.push("/Home");
-            console.log("guest")
+            const user = userCredential.user;
+            console.log(user);
         })
         .catch((error) => {
             var errorCode = error.code;
