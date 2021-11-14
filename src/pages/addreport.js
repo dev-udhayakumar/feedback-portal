@@ -44,6 +44,8 @@ function AddReport(){
                             " 1. subject":  subject,
                             " 2. feedback": feedback,
                             " 3. date & time" : Timestamp.fromDate(new Date()),
+                            " 4. ip address" : ip,
+                            " 5. city" : location
                         }
                             
                     });
