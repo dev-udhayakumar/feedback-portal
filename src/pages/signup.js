@@ -78,7 +78,7 @@ const Signup = () =>{
                     </div>
                     <div className="col">
                         <div className="d-grid gap-2 mt-4">
-                        <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signin'}</button>
+                        <button className="btn btn-primary" type="button" onClick={signin}>{loading ? 'Loading..' : 'Signup'}</button>
                         </div>
                     </div>
                 </div>

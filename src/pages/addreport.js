@@ -12,7 +12,8 @@ function AddReport(){
     const history = useHistory();
     const [ loading, setLoading ] = useState(false);
     const [ip, setip] =useState('');
-    const [location ,setlocation] =useState('');
+    const [city ,setcity] =useState('');
+    const [region,setregion] = useState('');
     var db= firebaseConfig.firestore();
     const auth = getAuth();
     const user = auth.currentUser;
@@ -21,7 +22,8 @@ function AddReport(){
           .then(results => results.json())
           .then(data => {
             setip(data.ip);
-            setlocation(data.city);
+            setcity(data.city);
+            setregion(data.region);
           });
       }, []);
     if(!user){
@@ -45,7 +47,7 @@ function AddReport(){
                             " 2. feedback": feedback,
                             " 3. date & time" : Timestamp.fromDate(new Date()),
                             " 4. ip address" : ip,
-                            " 5. city" : location
+                            " 5. location" : city +"," +  region , 
                         }
                             
                     });
@@ -65,11 +67,11 @@ function AddReport(){
                             " 2. feedback": feedback,
                             " 3. date & time" : Timestamp.fromDate(new Date()),
                             " 4. ip address" : ip,
-                            " 5. city" : location
+                            " 5. location" : city +"," + region ,
                         }
                             
                     });
-                    alert("Report Added  Your id : "+ docRef.id)
+                    alert("Report Added ,  id : "+ docRef.id)
                     history.push("/Home");
                     console.log("Document written with ID: ", docRef.id);
                   } catch (e) {
