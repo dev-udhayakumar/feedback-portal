@@ -2,7 +2,7 @@ import React from  'react';
 import { useState } from "react";
 import { useHistory,Redirect } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import { addDoc, collection,Timestamp } from "firebase/firestore"; 
+import { setDoc,doc } from "firebase/firestore"; 
 import firebaseConfig from "./Firebase.js";
 import Lode from "../Animation/reportload";
 import {toast} from 'react-toastify';
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
 function AddReport(){
-    const [subject , setsubject] = useState('');
+    const [from , setfrom] = useState('');
     const [feedback ,setfeedback] = useState('');
     const history = useHistory();
     const [ loading, setLoading ] = useState(false);
@@ -20,6 +20,9 @@ function AddReport(){
     var db= firebaseConfig.firestore();
     const auth = getAuth();
     const user = auth.currentUser;
+    const today = new Date();
+    const time = today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();
+    const timedate = ''+today.getDate()+"-"+(today.getMonth()+1)+"-"+today.getFullYear()+"@"+today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();
     React.useEffect(() => {
         fetch('https://ipapi.co/json/')
           .then(results => results.json())
@@ -33,19 +36,20 @@ function AddReport(){
         return <Redirect to="/login" />
     }
     async function add(){
-        if(subject.length===0  || subject.length===0 ){
+        if(from.length===0  || feedback.length===0 ){
             console.log("invalid");
             toast("Invalid Inputs");
+            
         }else{
             if(!user.displayName){
                 try {   
                     setLoading(true);
                     
-                    const docRef = await addDoc(collection(db,"Anonymous"), {
-                        report1:{
-                            " 1. subject":  subject,
+                    const docRef = await setDoc(doc(db, "Anonymous", ''+timedate), {
+                        report:{
+                            " 1. from":  from,
                             " 2. feedback": feedback,
-                            " 3. date & time" : Timestamp.fromDate(new Date()),
+                            " 3. time" : time,
                             " 4. location" : city +" , " +  region , 
                             " 5. ISP": isp,
                         }
@@ -53,7 +57,7 @@ function AddReport(){
                     });
                     toast("Feedback Added  Successfully")
                     history.push("/Home");
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log("Document written with ID: ", docRef);
                   } catch (e) {
                     console.error("Error adding document: ", e);
                   }setLoading(false);
@@ -61,11 +65,11 @@ function AddReport(){
                 try {   
                     setLoading(true);
                     
-                    const docRef = await addDoc(collection(db,user.displayName), {
+                    const docRef = await setDoc(doc(db, user.displayName, timedate ), {
                         report1:{
-                            " 1. subject":  subject,
+                            " 1. from":  from,
                             " 2. feedback": feedback,
-                            " 3. date & time" : Timestamp.fromDate(new Date()),
+                            " 3. time" : time,
                             " 4. location" : city +" , " + region ,
                             " 5. ISP": isp,
                         }
@@ -73,7 +77,7 @@ function AddReport(){
                     });
                     toast("Feedback Added  Successfully")
                     history.push("/Home");
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log("Document written with ID: ", docRef);
                   } catch (e) {
                     console.error("Error adding document: ", e);
                   }setLoading(false);
@@ -91,7 +95,7 @@ function AddReport(){
             <div className="m-1" style={{width: "22rem"}}>
             <div className="mb-3">
             <label for="exampleFormControlInput1" className="form-label" >From *</label>
-            <input type="name" className="form-control" id="subject" placeholder="Subject" value ={subject} onInput={e => setsubject(e.target.value)}></input>
+            <input type="name" className="form-control" id="subject" placeholder="Subject" value ={from} onInput={e => setfrom(e.target.value)}></input>
             </div>
             {/* <div class="mb-3">
             <label for="formFile" class="form-label">Attach file</label>
