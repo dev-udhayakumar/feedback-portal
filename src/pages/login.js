@@ -70,7 +70,7 @@ const Login= () =>{
                 <div>
                 <div className="row">
                     <div className="col-md-6">
-                    <LottieAnimation lotti={home} height={300} width={300} />
+                    <LottieAnimation lotti={home} height={250} width={250} />
                     </div>
                     <div className="col-md-6" >
                     <div className="d-flex justify-content-center mt-4">

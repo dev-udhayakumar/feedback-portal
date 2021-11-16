@@ -10,27 +10,37 @@ toast.configure()
 const Signup = () =>{
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
+    const [confirmpassword,setconfirmpassword] = useState('');
     const [firstname ,setfirstname] = useState('');
     const [lastname ,setlastname] = useState('');
     const [ loading, setLoading ] = useState(false);
     const history = useHistory();
     function signin(){
-        setLoading(true)
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            updateProfile(auth.currentUser, { displayName: firstname +" "+ lastname });
-            const user = userCredential.user;
-            console.log(user);
-            history.push("/Login");
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast("Invalid email or password")
-            console.log(errorCode , errorMessage)
-        }).finally(() => setLoading(false));;
+        if(email.length===0 || password.length===0 || firstname.length===0){
+            toast("Invalid Inputs")
+        }else{
+            if(password.length===confirmpassword.length){
+                setLoading(true)
+                const auth = getAuth();
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    updateProfile(auth.currentUser, { displayName: firstname +" "+ lastname });
+                    const user = userCredential.user;
+                    console.log(user);
+                    history.push("/Login");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    toast("Invalid email or password")
+                    console.log(errorCode , errorMessage)
+                }).finally(() => setLoading(false));;
+            }else{
+                toast("Password Mismatch")
+            }
+        }
+        
     }
     function alreadyhaveaccounnt(){
         history.push("/Login")
@@ -70,8 +80,8 @@ const Signup = () =>{
                     <input type="password" className="form-control" value={password} onInput={e => setpassword(e.target.value)} placeholder="Password" />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" placeholder="Confirm Password" />
+                    <label className="form-label" >Confirm Password</label>
+                    <input type="password" className="form-control" value={confirmpassword} onInput={e => setconfirmpassword(e.target.value)} placeholder="Confirm Password" />
                 </div>
                 <div className="row">
                     <div className="col">
