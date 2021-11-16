@@ -3,6 +3,9 @@ import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import Lode from "../Animation/loding";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 const Signup = () =>{
     const [email,setemail] = useState('');
@@ -25,7 +28,7 @@ const Signup = () =>{
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert("Invalid email or password")
+            toast("Invalid email or password")
             console.log(errorCode , errorMessage)
         }).finally(() => setLoading(false));;
     }

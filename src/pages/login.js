@@ -6,6 +6,10 @@ import { AuthContext } from "./Auth";
 import LottieAnimation from '../Animation/Lottifile';
 import home from '../Animation/login.json';
 import Lode from "../Animation/loding";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
 const Login= () =>{
     
     const {currentUser} = useContext(AuthContext)
@@ -26,11 +30,12 @@ const Login= () =>{
             const user = userCredential.user;
             console.log(user);
             history.push("/Home");
+            toast("Welcome  " + user.displayName);
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert("Invalid email or password")
+            toast("Invalid email or password")
             console.log(errorCode , errorMessage)
         }).finally(() => setLoading(false));
         
@@ -42,6 +47,7 @@ const Login= () =>{
             history.push("/Home");
             const user = userCredential.user;
             console.log(user);
+            toast("Welcome  Guest user");
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -91,11 +97,11 @@ const Login= () =>{
                 </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center ">
-                <span class="badge rounded-pill bg-light text-dark m-4 text-center">Or</span>
+                <div className="d-flex justify-content-center ">
+                <span className="badge rounded-pill bg-light text-dark m-4 text-center">Or</span>
                 </div>
-                <div class="d-grid gap-2">
-                <button class="btn btn-link" type="button" onClick={Guest}>Guest User</button>
+                <div className="d-grid gap-2">
+                <button className="btn btn-link" type="button" onClick={Guest}>Guest User</button>
                 </div>
                 </div>
                 </div>
