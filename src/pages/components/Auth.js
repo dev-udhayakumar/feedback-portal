@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import firebaseConfig from "./Firebase.js";
-import Lode from "../Animation/loding";
+import Lode from "./Animation/loding";
 
 export const AuthContext = React.createContext();
 

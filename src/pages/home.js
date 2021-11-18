@@ -3,7 +3,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useHistory,Redirect } from "react-router-dom";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AddReport from "./addreport";
+import AddReport from "./components/addreport";
 
 toast.configure()
 

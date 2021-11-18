@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Home from "./pages/home";
 import Login from './pages/login';
 import Signup from './pages/signup';
-import Report from './pages/addreport';
-import { AuthProvider } from "./pages/Auth";
+import Report from './pages/components/addreport';
+import { AuthProvider } from "./pages/components/Auth";
 
 
 class App extends Component {

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useHistory } from "react-router-dom";
-import Lode from "../Animation/loding";
+import Lode from "./components/Animation/loding";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
@@ -72,8 +72,8 @@ const Signup = () =>{
                     </div>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    <input type="email" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="dev.udhayakumar@gmail.com"  />
+                    <label className="form-label">Email</label>
+                    <input type="mail" className="form-control" value={email} onInput={e => setemail(e.target.value)} placeholder="dev.udhayakumar@gmail.com"  />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password</label>

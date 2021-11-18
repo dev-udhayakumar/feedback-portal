@@ -2,10 +2,10 @@ import React,{useContext} from "react";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword , signInAnonymously} from "firebase/auth";
 import { useHistory,Redirect } from "react-router-dom";
-import { AuthContext } from "./Auth";
-import LottieAnimation from '../Animation/Lottifile';
-import home from '../Animation/login.json';
-import Lode from "../Animation/loding";
+import { AuthContext } from "./components/Auth";
+import LottieAnimation from './components/Animation/Lottifile';
+import home from './components/Animation/login.json';
+import Lode from "./components/Animation/loding";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
@@ -101,7 +101,7 @@ const Login= () =>{
                 <span className="badge rounded-pill bg-light text-dark m-4 text-center">Or</span>
                 </div>
                 <div className="d-grid gap-2">
-                <button className="btn btn-link" type="button" onClick={Guest}>Guest User</button>
+                <button className="btn btn-primary" type="button" onClick={Guest}>Guest User</button>
                 </div>
                 </div>
                 </div>

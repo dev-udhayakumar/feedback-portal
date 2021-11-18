@@ -4,7 +4,7 @@ import { useHistory,Redirect } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { setDoc,doc } from "firebase/firestore"; 
 import firebaseConfig from "./Firebase.js";
-import Lode from "../Animation/reportload";
+import Lode from "./Animation/reportload";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
